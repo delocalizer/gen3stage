@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com///nextflow_schema.json",
+  "title": " pipeline parameters",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "manifest": {
+      "type": "string",
+      "format": "file-path",
+      "exists": true,
+      "description": "Path to Gen3 manifest file describing the objects to be fetched."
+    },
+    "apiendpoint": {
+      "type": "string",
+      "pattern": "https?://.*",
+      "description": "URL of the Gen3 instance where the objects are described."
+    }
+  }
+}
