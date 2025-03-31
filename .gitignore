@@ -1,0 +1,5 @@
+work/
+manifest.json
+.nextflow.log*
+.nextflow/
+.nf-core.yml
