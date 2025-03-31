@@ -6,7 +6,7 @@ A nextflow workflow to stage files from Gen3.
   specifed Gen3 endpoint.
 * `GEN3_API_KEY` and `GEN3_KEY_ID` have been set as nextflow secrets.
  
-## Example the workflow
+## Example run 
 
 ```
 nextflow run main.nf \
