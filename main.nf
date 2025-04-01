@@ -29,13 +29,22 @@ process DL_FILES {
     chmod +x gen3-client
     mkdir $dldir
     echo '{"api_key":"'\$GEN3_API_KEY'","key_id":"'\$GEN3_KEY_ID'"}' > $credentials
-    ./gen3-client configure --apiendpoint $apiendpoint} --cred $credentials --profile $profile 
-    ./gen3-client download-multiple --no-prompt --download-path $dldir --profile $profile --manifest $manifest
+    ./gen3-client configure \
+        --apiendpoint $apiendpoint \
+        --cred $credentials \
+        --profile $profile 
+    ./gen3-client download-multiple \
+        --no-prompt \
+        --download-path $dldir \
+        --profile $profile \
+        --manifest $manifest
     rm -f $credentials
     """
+
 }
 
 workflow {
-    DL_FILES(params.manifest, params.apiendpoint)
-    DL_FILES.out.view()
+    DL_FILES(params.manifest, params.apiendpoint) | flatten | view { fp ->
+        "${params.outdir}/${fp.name}"
+    }
 }
