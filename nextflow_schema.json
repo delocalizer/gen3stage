@@ -9,12 +9,26 @@
       "type": "string",
       "format": "file-path",
       "exists": true,
-      "description": "Path to Gen3 manifest file describing the objects to be fetched."
+      "description": "Full path to the Gen3 manifest file describing the objects to be fetched.",
+      "fa_icon": "far fa-file-code"
     },
     "apiendpoint": {
       "type": "string",
       "pattern": "https?://.*",
       "description": "URL of the Gen3 instance where the objects are described."
+    },
+    "outdir": {
+      "type": "string",
+      "format": "directory-path",
+      "description": "Full path to the output directory.",
+      "fa_icon": "fas fa-folder-open"
+    },
+    "mode": {
+      "type": "string",
+      "default": "copy",
+      "enum": ["move", "copy", "link", "symlink"],
+      "description": "Mode for output publishing."
     }
-  }
+  },
+  "required": ["manifest", "apiendpoint", "outdir"]
 }
