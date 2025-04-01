@@ -1,6 +1,6 @@
 process DL_FILES {
 
-    container 'rockylinux/rockylinux'
+    container 'ubuntu:latest'
     
     secret 'GEN3_API_KEY'
     secret 'GEN3_KEY_ID'
@@ -14,7 +14,7 @@ process DL_FILES {
     credstore='./credentials.json'
     profile='staging'
     # FEATURE build a container with the client installed already
-    yum install -y wget unzip jq
+    apt-get update && apt-get install -y wget jq unzip
     wget https://github.com/uc-cdis/cdis-data-client/releases/latest/download/dataclient_linux.zip
     unzip dataclient_linux.zip
     chmod +x gen3-client
