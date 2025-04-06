@@ -12,4 +12,11 @@ A nextflow workflow to stage files from Gen3.
 nextflow run main.nf \
     --manifest `pwd`/manifest.json \
     --apiendpoint https://gen3.datacommons.io/
+    --outdir s3://my-bucket/prefix
+    --mode move
 ```
+
+## Usage notes
+
+* The default mode is `copy`, which retains files in the nextflow workdir as
+  well as the target staging directory.
